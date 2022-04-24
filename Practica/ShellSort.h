@@ -25,7 +25,7 @@ std::vector<Key> ShellSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano
     while (delta > 1) {
         delta = delta / 2;
         #ifdef traza
-        std::cout << "{Delta = " << delta << "}" << std::endl;
+        std::cout << "**** {Delta = " << delta << "} ****" << std::endl;
         #endif
         secuencia1 = deltaSort(secuencia1, tamano1, delta);
     }

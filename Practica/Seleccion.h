@@ -26,22 +26,19 @@ std::vector<Key> Seleccion<Key>::Ordenar(std::vector<Key> secuencia1, int tamano
         for (int j = i+1; j < tamano1; j++) {
             if (secuencia1[j] < secuencia1[min]) {
                 min = j;
-                #ifdef traza
-                std::cout << "// (" << i << "," << j << ") [" << secuencia1[j] << " < " << secuencia1[min] << "] OK //" << std::endl;
-                Imprimir(secuencia1, tamano1);
-                #endif
             }
 
-            #ifdef traza2
-            std::cout << "(" << i << "," << j << ") " << secuencia1[j] << " < " << secuencia1[min] << ": X" << std::endl;
-            Imprimir(secuencia1, tamano1);
-            #endif
         }
+
+        #ifdef traza
+        std::cout << "**** (" << i << "," << min << ") [" << secuencia1[i] << " < " << secuencia1[min] << "] ****" << std::endl;
+        Imprimir(secuencia1, tamano1);
+        #endif
+
         x = secuencia1[min];
         secuencia1[min] = secuencia1[i];
         secuencia1[i] = x;
     }
-    std::cout << "NEW GENERATION" << std::endl;
     return secuencia1;
 
 }

@@ -30,7 +30,7 @@ std::vector<Key> QuickSort<Key>::Qsort (std::vector<Key> secuencia1, int ini, in
     Key p = secuencia1[(i+f)/2];
 
     #ifdef traza
-    std::cout << "**(Pivote: " << p << ")**" << std::endl;
+    std::cout << "*** (Pivote: " << p << ") ***" << std::endl;
     #endif
 
     while (i <= f) {
@@ -84,6 +84,7 @@ std::vector<Key> QuickSort<Key>::Qsort (std::vector<Key> secuencia1, int ini, in
         Imprimir(secuencia1, tamano1);
         //Imprimir_secuencia(secuencia1, i, f);
         #endif
+        Imprimir(secuencia1, tamano1);
         secuencia1 = Qsort(secuencia1, ini, f, tamano1);
     }
 
@@ -94,11 +95,12 @@ std::vector<Key> QuickSort<Key>::Qsort (std::vector<Key> secuencia1, int ini, in
         Imprimir(secuencia1, tamano1);
         //Imprimir_secuencia(secuencia1, i, f);
         #endif
+        Imprimir(secuencia1, tamano1);
         secuencia1 = Qsort(secuencia1, i, fin, tamano1);
     }
 
     //std::cout << "PREFINAL: ";
-    Imprimir(secuencia1, tamano1);
+    //Imprimir(secuencia1, tamano1);
 
     return secuencia1;
 }

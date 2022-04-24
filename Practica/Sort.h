@@ -59,7 +59,7 @@ void Sort<Key>::Ordenar() {
 
     std::vector<Key> vector1;
     vector1 = Ordenacion_->Ordenar(Secuencia_, tamano_);
-    #ifndef traza
+    #ifdef traza
     std::cout << "Secuencia final: ";
     #endif
     Imprimir(vector1, tamano_);
@@ -80,7 +80,7 @@ bool Sort<Key>::SetOrdenacion(int opcion) {
         Ordenacion_ = new ShellSort<Key>;
         break;
     case 4:
-        //Ordenacion_ = new HeapSort<Key>;
+        Ordenacion_ = new HeapSort<Key>;
         break;
     case 5:
         //Ordenacion_ = new RadixSort<Key>;
@@ -140,6 +140,6 @@ void Sort<Key>::Print() {
     for (int i = 0; i < tamano_; i++) {
         std::cout << Secuencia_[i] << " ";
     }
-    std::cout << std::endl << "###############" << std::endl;
+    std::cout << std::endl << "############### (" << Secuencia_.size() << ")" << std::endl;
 
 }

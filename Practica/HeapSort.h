@@ -21,13 +21,13 @@ class HeapSort: public MetodosOrdenacion<Key> {
 template<class Key>
 std::vector<Key> HeapSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano1) {
 
-    for (int i = tamano1/2; i > 0; i--) {
+    for (int i = (tamano1/2)/*-1*/; i >/*=*/ 0; i--) {
         secuencia1 = Baja(secuencia1, tamano1, i);
     }
 
-    for (int i = n; i > 1; i--) {
-        std::swap(secuencia1[1], secuencia[i]);
-        secuencia1 = Baja(secuencia1, i-1, 1);
+    for (int i = tamano1/*-1*/; i > 1/*0*/; i--) {
+        std::swap(secuencia1[/*0*/1], secuencia1[i]);
+        secuencia1 = Baja(secuencia1, i-1, 1/*0*/);
     }
 
     return secuencia1;
@@ -36,25 +36,54 @@ std::vector<Key> HeapSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano1
 template<class Key>
 std::vector<Key> HeapSort<Key>::Baja (std::vector<Key> secuencia1, int tamano1, int i) {
 
+    /*int h1 = 2*i + 1;
+    int h2 = h1 + 2;
+    int h = i;
+
+    if (h1 < tamano1 && secuencia1[h1] > secuencia1[h]) {
+        h = h1;
+    } 
+
+    if (h2 < tamano1 && secuencia1[h2] > secuencia1[h]) {
+        h = h2;
+    } 
+
+    if (h != i) {
+        std::swap(secuencia1[i], secuencia1[h]);
+        secuencia1 = Baja(secuencia1, tamano1, h);
+    }*/
+
     int h1, h2, h;
 
-    while (2*i <= tamano1) {
-        h1 = 2 * i;
-        h2 = h1 + 1;
+    //while (h1 <= tamano1) {
+    while (2*i <= tamano1){
+        //h1 = 2 * i + 1;
+        //h2 = h1 + 2;
+
+        h1 = 2*i;
+        h2 = h1+1;
 
         if (h1 == tamano1) {
-            h = h1:
+            h = h1;
         } else if (secuencia1[h1] > secuencia1[h2]) {
             h = h1;
-
         } else {
             h = h2;
         }
 
         if (secuencia1[h] <= secuencia1[i]){
+            
+            #ifdef traza
+            Imprimir(secuencia1, tamano1);
+            #endif
+
+            break;
 
         } else {
             std::swap(secuencia1[i], secuencia1[h]);
+            #ifdef traza
+            Imprimir(secuencia1, tamano1);
+            #endif
             i = h;
         }
     }
