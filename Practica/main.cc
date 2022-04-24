@@ -31,10 +31,13 @@ int main() {
 
 	
 
-	std::cout << "Si desea introducir los valores manualmente pulse 1, sino pulse cualquier otro número (automático): ";
+	std::cout << "1-> Manual. 2-> Fichero texto. 3-> Automático: ";
 	std::cin >> opcion_valores;
 
-	sort1.Insercion(opcion_valores);
+	while (!sort1.Insercion(opcion_valores)) {
+		std::cout << "ERROR. Intentelo de nuevo" << std::endl;
+	}
+
 	std::cout << "HAS INTRODUCIDO: "; 
 	sort1.Print();
 

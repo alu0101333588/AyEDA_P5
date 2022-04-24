@@ -22,7 +22,7 @@ template<class Key> class Sort {
         Sort(int tamano);
         ~Sort() = default;
         
-        void Insercion(int opcion); // 1 - Manual | * - Automática
+        bool Insercion(int opcion); // 1 - Manual | * - Automática
 
         void Print(); 
         int GetTamano() const {return tamano_; }
@@ -74,16 +74,16 @@ bool Sort<Key>::SetOrdenacion(int opcion) {
         Ordenacion_ = new Seleccion<Key>();
         break;
     case 2:
-        ///mOrdenacion_ = new QuickSort<Key>();
+        Ordenacion_ = new QuickSort<Key>();
         break;
     case 3:
-        //mOrdenacion_ = new ShellSort<Key>();
+        //Ordenacion_ = new ShellSort<Key>();
         break;
     case 4:
-        //mOrdenacion_ = new HeapSort<Key>();
+        //Ordenacion_ = new HeapSort<Key>();
         break;
     case 5:
-        //mOrdenacion_ = new RadixSort<Key>();
+        //Ordenacion_ = new RadixSort<Key>();
         break;
 
     default:
@@ -96,7 +96,7 @@ bool Sort<Key>::SetOrdenacion(int opcion) {
 }
 
 template<class Key>
-void Sort<Key>::Insercion(int opcion) {
+bool Sort<Key>::Insercion(int opcion) {
 
     int max = 9999, min = 1000;
     
@@ -106,13 +106,33 @@ void Sort<Key>::Insercion(int opcion) {
             std::cin >> Secuencia_[i];
         }            
         std::cout << "________________" << std::endl;
+        return true;
 
-    } else {
+    } else if (opcion == 2){
+        std::string nfichero = "";
+        std::cout << "INTRODUZCA EL NOMBRE DEL FICHERO: ";
+        std::cin >> nfichero;
+
+        std::ifstream lectura1(nfichero);
+        while(!lectura1.eof()) {
+            //std::string linea = " ";
+            //getline(lectura1, linea);
+
+            for (int i = 0; i < tamano_; i++) {
+                lectura1 >> Secuencia_[i];
+            }
+            return true;
+        }
+
+    } else if (opcion == 3) {
         srand(time(NULL));
         for (int i = 0; i < tamano_; i++) {
             Secuencia_[i] = rand() % (max - min - 1) + min; 
         }
+        return true;
     }
+
+    return false;
 }
 
 template<class Key>

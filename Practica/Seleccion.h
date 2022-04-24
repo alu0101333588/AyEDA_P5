@@ -20,32 +20,28 @@ std::vector<Key> Seleccion<Key>::Ordenar(std::vector<Key> secuencia1, int tamano
     int min = 0;
 
     for (int i = 0; i < tamano1 - 1; i++) {
-        for (int i = 0; i < tamano1 - 1; i++) {
-            min = i;
+        
+        min = i;
 
-            for (int j = i+1; j < tamano1; j++) {
-                if (secuencia1[j] < secuencia1[min]) {
-                    min = j;
-                    #ifdef traza
-                    std::cout << "// (" << i << "," << j << ") " << secuencia1[j] << " < " << secuencia1[min] << ": ✓ //" << std::endl;
-                    Imprimir(secuencia1, tamano1);
-                    #endif
-
-                    
-
-                }
-                x = secuencia1[min];
-
-                #ifdef traza2
-                std::cout << "(" << i << "," << j << ") " << secuencia1[j] << " < " << secuencia1[min] << ": X" << std::endl;
+        for (int j = i+1; j < tamano1; j++) {
+            if (secuencia1[j] < secuencia1[min]) {
+                min = j;
+                #ifdef traza
+                std::cout << "// (" << i << "," << j << ") [" << secuencia1[j] << " < " << secuencia1[min] << "] OK //" << std::endl;
                 Imprimir(secuencia1, tamano1);
                 #endif
             }
-            //x = secuencia1[min];
-            secuencia1[min] = secuencia1[i];
-            secuencia1[i] = x;
+
+            #ifdef traza2
+            std::cout << "(" << i << "," << j << ") " << secuencia1[j] << " < " << secuencia1[min] << ": X" << std::endl;
+            Imprimir(secuencia1, tamano1);
+            #endif
         }
+        x = secuencia1[min];
+        secuencia1[min] = secuencia1[i];
+        secuencia1[i] = x;
     }
+    std::cout << "NEW GENERATION" << std::endl;
     return secuencia1;
 
 }

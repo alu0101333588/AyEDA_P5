@@ -18,4 +18,14 @@ void Imprimir(std::vector<Key> secuencia1, int tamano1) {
 
 }
 
+template<class Key>
+void Imprimir_secuencia(std::vector<Key> secuencia1, int inicio, int final) {
+    std::cout << "[ ";
+    for (int i = inicio; i < final+1; i++) {
+        std::cout << secuencia1[i] << " ";
+    }
+    std::cout <<  "]" << std::endl;
+
+}
+
 
