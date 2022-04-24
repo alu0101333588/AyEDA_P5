@@ -83,7 +83,7 @@ bool Sort<Key>::SetOrdenacion(int opcion) {
         Ordenacion_ = new HeapSort<Key>;
         break;
     case 5:
-        //Ordenacion_ = new RadixSort<Key>;
+        Ordenacion_ = new RadixSort<Key>;
         break;
 
     default:
