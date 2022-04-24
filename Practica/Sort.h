@@ -71,19 +71,19 @@ bool Sort<Key>::SetOrdenacion(int opcion) {
     
     switch (opcion) {
     case 1:
-        Ordenacion_ = new Seleccion<Key>();
+        Ordenacion_ = new Seleccion<Key>;
         break;
     case 2:
-        Ordenacion_ = new QuickSort<Key>();
+        Ordenacion_ = new QuickSort<Key>;
         break;
     case 3:
-        //Ordenacion_ = new ShellSort<Key>();
+        Ordenacion_ = new ShellSort<Key>;
         break;
     case 4:
-        //Ordenacion_ = new HeapSort<Key>();
+        //Ordenacion_ = new HeapSort<Key>;
         break;
     case 5:
-        //Ordenacion_ = new RadixSort<Key>();
+        //Ordenacion_ = new RadixSort<Key>;
         break;
 
     default:
