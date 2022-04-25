@@ -21,17 +21,22 @@ class ShellSort: public MetodosOrdenacion<Key> {
 template<class Key>
 std::vector<Key> ShellSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano1) {
 
-    int alfa = 0;
+    double alfa = 0;
     while (alfa <= 0 || alfa > 1) {
         std::cout << "Introduce un valor para alfa (0 < alfa < 1): ";
         std::cin >> alfa;
     }
 
     int delta = tamano1;
-    delta = delta * alfa;
+
     while (delta > 1) {
         
-        delta = delta / 2;
+        delta = delta * alfa;
+        if (delta == 0) {
+            delta = 1;
+        }
+        
+        //delta = delta / 2; 
         #ifdef traza
         std::cout << "**** {Delta = " << delta << "} ****" << std::endl;
         #endif
@@ -51,13 +56,10 @@ std::vector<Key> ShellSort<Key>::deltaSort (std::vector<Key> secuencia1, int tam
         while ((j >= delta) && (x < secuencia1[j - delta])) {
 
             #ifdef traza
+            Imprimir(secuencia1, tamano1);
             std::cout << "[" << x << " < " << secuencia1[j - delta] << "] OK" << std::endl;
             #endif
             secuencia1[j] = secuencia1[j - delta];
-
-            #ifdef traza
-            Imprimir(secuencia1, tamano1);
-            #endif
             
             j = j - delta;
         }

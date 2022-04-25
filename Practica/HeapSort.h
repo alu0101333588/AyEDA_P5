@@ -21,13 +21,13 @@ class HeapSort: public MetodosOrdenacion<Key> {
 template<class Key>
 std::vector<Key> HeapSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano1) {
 
-    for (int i = (tamano1/2)/*-1*/; i >/*=*/ 0; i--) {
+    for (int i = (tamano1/2) - 1; i >= 0; i--) {
         secuencia1 = Baja(secuencia1, tamano1, i);
     }
 
-    for (int i = tamano1/*-1*/; i > 1/*0*/; i--) {
-        std::swap(secuencia1[/*0*/1], secuencia1[i]);
-        secuencia1 = Baja(secuencia1, i-1, 1/*0*/);
+    for (int i = tamano1 -1 ; i >/*=*/ 0; i--) {
+        std::swap(secuencia1[0], secuencia1[i]);
+        secuencia1 = Baja(secuencia1, i, 0);
     }
 
     return secuencia1;

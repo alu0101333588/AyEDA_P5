@@ -60,7 +60,7 @@ void Sort<Key>::Ordenar() {
     std::vector<Key> vector1;
     vector1 = Ordenacion_->Ordenar(Secuencia_, tamano_);
     #ifdef traza
-    std::cout << "Secuencia final: ";
+    std::cout << "<><><><> SECUENCIA FINAL <><><><>: ";
     #endif
     Imprimir(vector1, tamano_);
 
