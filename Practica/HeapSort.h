@@ -25,7 +25,7 @@ std::vector<Key> HeapSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano1
         secuencia1 = Baja(secuencia1, tamano1, i);
     }
 
-    for (int i = tamano1 -1 ; i >/*=*/ 0; i--) {
+    for (int i = tamano1 -1 ; i > 0; i--) {
         std::swap(secuencia1[0], secuencia1[i]);
         secuencia1 = Baja(secuencia1, i, 0);
     }
@@ -35,10 +35,12 @@ std::vector<Key> HeapSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano1
 
 template<class Key>
 std::vector<Key> HeapSort<Key>::Baja (std::vector<Key> secuencia1, int tamano1, int i) {
-
-    /*int h1 = 2*i + 1;
-    int h2 = h1 + 2;
-    int h = i;
+    
+    int h1, h2, h;
+    #ifndef antiguo
+    h1 = 2*i + 1;
+    h2 = h1 + 2;
+    h = i;
 
     if (h1 < tamano1 && secuencia1[h1] > secuencia1[h]) {
         h = h1;
@@ -51,17 +53,17 @@ std::vector<Key> HeapSort<Key>::Baja (std::vector<Key> secuencia1, int tamano1, 
     if (h != i) {
         std::swap(secuencia1[i], secuencia1[h]);
         secuencia1 = Baja(secuencia1, tamano1, h);
-    }*/
+    }
+    #endif
 
-    int h1, h2, h;
 
-    //while (h1 <= tamano1) {
-    while (2*i <= tamano1){
-        //h1 = 2 * i + 1;
-        //h2 = h1 + 2;
+    while (h1 <= tamano1) {
+    //while (2*i <= tamano1){
+        h1 = 2 * i + 1;
+        h2 = h1 + 2;
 
-        h1 = 2*i;
-        h2 = h1+1;
+        //h1 = 2*i;
+        //h2 = h1+1;
 
         if (h1 == tamano1) {
             h = h1;
