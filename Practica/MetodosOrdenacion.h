@@ -27,5 +27,3 @@ void Imprimir_secuencia(std::vector<Key> secuencia1, int inicio, int final) {
     std::cout <<  "]" << std::endl;
 
 }
-
-

@@ -20,52 +20,35 @@ class RadixSort: public MetodosOrdenacion<Key> {
 
 template<class Key>
 std::vector<Key> RadixSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano1) {
-
-    //std::cout << "ENTRADA" << std::endl;
-
-    //int i, j, d, m = 1;
-    std::vector<Key> oVector;
+      
     int longitud = std::to_string(secuencia1[0]).length();
+    int fase = 1;
     
 
     for (int i = longitud-1; i > -1; i = i - 1) { 
-        oVector = secuencia1;
-        int k = 0;
-        while (k < tamano1) {
-            int comparacion = 9;
-            int posicion = 0;
+        std::vector<std::vector<Key>> oVector;
+        oVector.resize(10);
+
+        for (int j = 0; j < tamano1; j++) {
+            std::string elemento = std::to_string(secuencia1[j]);
+            char num2 = elemento[i];
+            int num1 = num2 - '0'; 
+
+            oVector[num1].push_back(secuencia1[j]);
             
-            for (int j = k; j < tamano1; j++) {
-                std::string elemento = std::to_string(oVector[j]);
-                char num2 = elemento[i];
-                int num1 = num2 - '0'; 
-
-                if (num1 < comparacion) {
-                    comparacion = num1; 
-                }
-            }
-
-            int q = k;
-
-            for (int j = q; j < tamano1; j++) {
-                int posicion_clave = 0;
-                for (int l = j; l < tamano1; l++) {
-                    std::string elemento = std::to_string(oVector[l]);
-                    char num2 = elemento[i];
-                    int num1 = num2 - '0'; 
-                    if (num1 == comparacion) {
-                        if (oVector[j] <= oVector[comparacion]) { 
-                            posicion_clave = l;
-                        }    
-                    }  
-                }
-                std::swap(oVector[k], oVector[posicion_clave]);
-                k++;
-            }
         }
 
+
         #ifdef traza
-        Imprimir(oVector, tamano1);
+        std::cout << "[FASE " << fase << "]" << std::endl;
+        for (int h = 0; h < 10; h++) {
+            int tamano2 = oVector[h].size();
+            for (int l = 0; l < tamano2; l++) {
+                std::cout << oVector[h][l] << " ";
+            }
+        }   
+        std::cout << std::endl;
+        fase++;
         #endif
     }
 
