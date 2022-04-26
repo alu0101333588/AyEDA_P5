@@ -25,8 +25,9 @@ std::vector<Key> RadixSort<Key>::Ordenar(std::vector<Key> secuencia1, int tamano
     int fase = 1;
     
     
-    
+
     for (int i = longitud-1; i > -1; i = i - 1) { 
+        
         std::vector<std::vector<Key>> oVector;
         oVector.resize(10);
 
